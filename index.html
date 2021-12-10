@@ -1,85 +1,302 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
 	<head>
-		<title>Ryan's webpage</title>
+		<title>Election Analysis by Ryan</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="https://d3js.org/d3.v6.min.js"></script>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
-	<body>
-		<h2>Ryan Dirajlal</h2> <!-- <br> break tag = new line-->
-		<ul>
-			<li><a href = "https://www.linkedin.com/in/ryan-dirajlal-24a5b458/">LinkedIn/Resume</a></li>
-			<li><a href = "https://bl.ocks.org/ryan-dirajlal">block from bl.ocks.org</a></li>
-		</ul>
-		
-		<h2>Technical Skills:</h2>
-		
-	<ul> <!--unordered list-->
-		<li>Python</li> <!--href = a hyperlink reference-->
-		<li>Java</li>
-		<li>C</li>
-		<li>Swift/SwiftUI</li>
-	</ul>
-		<h2>Assignment 2 blocks</h2> <!-- <br> break tag = new line-->
-		<ul>
-			<li><a href = "https://bl.ocks.org/ryan-dirajlal/60f40732fcd515a07971dcc71147bb3d">Bar Graph</a></li>
-			<li><a href = "https://bl.ocks.org/ryan-dirajlal/a6792b7a2d0fcb273e91c43af596aa24">Dot Plot</a></li>
-			<li><a href = "https://bl.ocks.org/ryan-dirajlal/df9462771db33fd292b6a13294d0cd6f">Heat Map</a></li>
-			
-		</ul>
-		
-		<h2>Assignment 3 blocks</h2> <!-- <br> break tag = new line-->
-		<ul>
-			<li><a href = "https://bl.ocks.org/ryan-dirajlal/f3bb229d8395a54af0791688d97a7709">Histogram</a></li>
-			<li><a href = "https://bl.ocks.org/ryan-dirajlal/7e0aab06dd640eb201b5d64b82747940">Box Plot</a></li>
-			
-			
-		</ul>
-		
-		<h2>Assignment 4 block</h2> <!-- <br> break tag = new line-->
-		<ul>
-			<li><a href = "https://bl.ocks.org/ryan-dirajlal/79a587190ca3c2d6013087b0e05a71f1">Animation</a></li>
-		</ul>
-		
-		<h2>Assignment 5 block</h2> <!-- <br> break tag = new line-->
-		<ul>
-			<li><a href = "https://bl.ocks.org/ryan-dirajlal/e276b21d9480d95a6a9823e87c512538">Bar Chart</a></li>
-		</ul>
-		
-		<h2>Assignment 6 block</h2> <!-- <br> break tag = new line-->
-		<ul>
-			<li><a href = "https://bl.ocks.org/ryan-dirajlal/e6af95d42cbff7aae00bfda7ef606248">Bubble Chart</a></li>
-		</ul>
-		
-		<h2>Assignment 7 blocks</h2> <!-- <br> break tag = new line-->
-		<ul>
-			<li><a href = "https://bl.ocks.org/ryan-dirajlal/6d741cd6c719e4c7e3a3d81c15c33e5a">Sequential Bar Chart</a></li>
-		</ul>
-		<ul>
-			<li><a href = "https://bl.ocks.org/ryan-dirajlal/da985cdb138a2644097cb2e3ab07ab29">Diverging Color Scale</a></li>
-		</ul>
-		
-		<h2>Assignment 8 block</h2> <!-- <br> break tag = new line-->
-		<ul>
-			<li><a href = "https://bl.ocks.org/ryan-dirajlal/dda76d1c3acee29bca756b44967f2437">Node-link Diagram</a></li>
-			<li><a href = "http://bl.ocks.org/eggchul/4f7b66224adecb2796f685447cd12448">Sources</a></li>
-		</ul>
-		
-		<h2>Assignment 9 block - Interaction in D3</h2> <!-- <br> break tag = new line-->
-		<ul>
-			<li><a href = "https://bl.ocks.org/ryan-dirajlal/d790f920922c3f8235cc3cabb6c7b9fe">Interactive Graph</a></li>
-			<li><a href = "https://www.d3indepth.com">Source 1</a></li>
-			<li><a href = "https://www.d3-graph-gallery.com/graph/interactivity_button.html">Source 2</a></li>
-		</ul>
-		
-		<h2>Assignment 10 block - GeoVis</h2> <!-- <br> break tag = new line-->
-		<ul>
-			<li><a href = "https://bl.ocks.org/ryan-dirajlal/7b07adaea1961200de8c1c31fb0b7a50">Choropleth</a></li>
-			<li><a href = "https://bl.ocks.org/ryan-dirajlal/6c66fd0cb066f2015831606fd925277b">Proportional</a></li>
-		</ul>
-		
-		<h2>Assignment 11 link - Black Hats vs White Hats</h2> <!-- <br> break tag = new line-->
-		<ul>
-			<li><a href = "https://drive.google.com/file/d/1pObBVxDEvKLY0zQtQ_7_VV3YROxwDuvY/view?usp=sharing">PDF containing descriptions and links for grades C, B, A, and A+</a></li>
-		</ul>
+	<style>
+		.axis line{
+			stroke: black;
+			stroke-width: 3;
+			shape-rendering: crispEdges;
+		}
+
+		/* AXES */
+		/* ticks */
+
+		/* axis contour */
+		.axis path {
+			stroke: black;
+			stroke-width: 3;
+			shape-rendering: crispEdges;
+		}
+
+		/* axis text */
+		.axis text {
+			fill: #2b2929;
+			font-family: Georgia;
+			font-size: 120%;
+		}
+
+		/* LINE CHART */
+		path.line-0 {
+			fill: none;
+			stroke: blue;
+			stroke-width: 3;
+		}
+
+		path.line-1 {
+			fill: none;
+			stroke: red;
+			stroke-width: 3;
+		}
+
+		/*path.line-2 {*/
+		/*    fill: none;*/
+		/*    stroke: white;*/
+
+		/*}*/
+
+		.serie_label {
+			fill: #2b2929;
+			font-family: Georgia;
+			font-size: 80%;
+		}
+		.axis {
+			opacity: .6;
+		}
+
+		.bubbles {
+			stroke-width: 2px;
+			stroke: white;
+			opacity: .8;
+		}
+		.bubbles:hover {
+			stroke: black;
+			opacity: 1.0;
+		}
+
+	</style>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<span class="demsVreps"><img src="images/demsVreps.jpg" alt="" /></span>
+						<h1>Understanding American Politics</h1>
+						<p>Discover, visualize, and analyze U.S. political elections<br />
+						built by Ryan Dirajlal.</p>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="#intro" class="active">Introduction</a></li>
+							<li><a href="#first">Presidential Results</a></li>
+							<li><a href="#cta">Compare Elections</a></li>
+							<li><a href="#second">Predict Midterms</a></li>
+							<li><a href="#third">Demographics and Elections</a></li>
+							<li><a href="#conclusion">Conclusion</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Introduction -->
+							<section id="intro" class="main">
+								<div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<h2>Intro</h2>
+										</header>
+										<p>Ever since the 2016 General Election, I have been fascinated with how data can allow us to
+											easily understand why certain candidates perform better than others. I have grown to
+											appreciate data visualization through reading platforms such as 538 and the NYTimes.
+											I appreciate how data visualization can be used to tell a story, and these sources have inspired me to tell
+											a new story about elections through data by myself, which is why I enrolled in Data Visualization, and it is
+											also the motivation for this project. As you read through this project, you will gain a better understanding
+											about historical trends and indicators of U.S. national election results.</p>
+									</div>
+									<span class="image"><img src="images/dataVis.jpg" alt="" /></span>
+								</div>
+							</section>
+
+						<!-- First Section -->
+							<section id="first" class="main 1 special">
+								<header class="major">
+									<h2>Presidential Election Results Throughout History</h2>
+								</header>
+								<body>
+								<div id="lineChart"></div>
+								<div id="footer1"><p style="text-align:left">It can often seem like there is no trend to American Presidential
+									Election Results. However, after analyzing the above graph, we can conclude that the American
+									electorate almost always pushes back against and "punishes" the current party in power.
+									No matter which party is currently in control of the White House, it is almost guaranteed they will lose that control
+									in the next two general elections.
+									If we take into account the political state during  the 1980, 1984, and 1988 presidential elections,
+									it would seem like a near-impossible feat for
+									Democrats to regain control of the White House. In each of these three elections, Republicans won almost
+									more than 300 electoral votes than the Democrats, and 1992 also had a Republican incumbent (Bush). However, no matter how in-control
+									a party may seem, nobody is invincible to the American Electorate's infamous pushback that I have previously described.
+									Thus, in 1992, Bill Clinton won back the Senate and the White House for the Democratic Party. This back-and-forth between
+									Republicans and Democrats holding control has continued in every other election up to the previous election in 2020.</p>
+								</div>
+
+
+								</body>
+
+							</section>
+
+						<!-- Get Started -->
+						<section id="cta" class="main special">
+							<header class="major">
+								<h2>Comparing Midterm and General Election Correlations</h2>
+
+							</header>
+							<body>
+							<div id="footer3"><p style="text-align:left">It is a popular belief to think that midterm elections can predict the outcome of the next general election. However,
+								that is not always the case. Because the national midterm elections only have the U.S. House and 1/3rd of the senate up for election, voters tend
+								to care more about local issues over national issues. Additionally, there is always a much smaller turnout for midterm elections
+								than there are for general presidential elections; only about 40% of eligible voters actually vote in the midterm elections, whereas ~60% of voters
+								usually vote in the general presidential elections. You can see the results of the correlation of elections in the parallel coordinates chart below.
+								There are 100 total Senate Seats, so each Senate Election axis value aligns with how many seats each party has after the listed election.
+								I have also converted the Presidential Election Electoral Votes into a percentage; thus, the presidential election axes are out
+								of 100% of the electoral college. In this chart, each party therefore only needs 51% to win the election.</p></div>
+							<div id="parallelChart"></div>
+							<div id="footer4"><p style="text-align:left">After viewing the parallel coordinates graph, we can now begin to dissect why the elections in the late
+								90s had these results. The 1992 Senate and Presidential elections are highly correlated, and democrats performed well in both elections.
+								This is due to the fact that Republicans currently held office at the time of the election, but the economy was beginning to sour.
+								At this point, America had a Republican as president for over a decade, and there was also a growing call for change and progress.
+								Thus, because of America's desire for progress and frustration for economy, George H. W. Bush became a rare 1-term president,
+								and Bill Clinton defeated him and won back the Senate for the Democrats. Because Democrats had control of Congress and the White House,
+								they were able to push forward with their more liberal agenda, and it began an era of progressive ideology. All was looking well
+								for the democratic party, but as the party became more liberal, the American electorate began to push back. The 1994 Midterm Election
+								shows that Republicans were able to win back the Senate in the "Republican Revolution," also known as the Red Wave.
+								This is because Clinton pushed for liberal policies that were unpopular at the time, such as allowing homosexual people to
+								serve in the military. At the time, according to Pew Research, only 27% of Americans were in favor of homosexual people serving
+								in the military. Clinton saw America's refutal of his policies in the midterm election, and he began to compromise more with Republicans
+								on conservative issues. To continue his fight against the infamous electoral "push back", Bill Clinton signed the Defense of Marriage Act, which defined marriage as being between
+								one man and one woman. His continuous compromises with Republicans may have saved him, as he easily won reelection in 1996.
+								However, Democrats still did not win back control of the senate. This is indicative of my findings that midterm and Congressional
+								elections do not correlate to General Presidential Election outcomes, contrary to popular belief.</p></div>
+
+
+							</body>
+						</section>
+						<!-- Second Section -->
+							<section id="second" class="main special">
+								<header class="major">
+									<h2>House Seats Lost Based on Current President</h2>
+								</header>
+								<body>
+								<div id="barChart"></div>
+								<div id="footer2"><p style="text-align:left">As we saw in the Parallel Coordinates Graph, the Midterm Elections and General Congressional Elections
+									do not always correlate to the outcome of the presidential election. However, I argue that although we cannot predict presidential
+									elections from midterm election results, we *can* predict midterm election results with which party currently controls the
+									executive branch. This can be seen in the bar graph above, where the party of the current president almost always loses
+									seats in the House of Representatives in the following midterm election, no matter the current president's approval rating.
+									The higher the approval rating of a president, the less seats his party will lose, but it will almost certainly result in a
+									net loss of some amount. Thus, we can predict the outcome of midterm election based on the current president, but not vice versa.
+									This results in my hypothesis that America tends to stay moderate and welcomes change very slowly. This is why we see a "pushback"
+									of a president's party in the midterm elections; it is a popular hypothesis that the American electorate realizes they need the competing party to keep the President's
+									party in check.</p></div>
+
+
+								</body>
+							</section>
+
+
+						<!-- Get Started 2-->
+						<section id="third" class="main special">
+							<header class="major">
+								<h2>Comparing Demogaphics to 2020 Election Results</h2>
+								<p>Can Education and State Population Predict Election Results?</p>
+							</header>
+							<body>
+							<div id="bubbleChart"></div>
+							<div id="footer5"><p style="text-align:left">It is extremely common to hear the media repeat that college-educated
+							voters as well as highly-populated states tend to vote "blue," or for democratic candidates. To determine if this is true, we can look at the
+							bubble graph above and visualize the correlation between different states' education levels and their
+							likelihood of voting for a democratic presidential candidate. Immediately, it is clear that there
+							are two clusters between the states that went blue in the 2020 election and the states that voted for a republican.
+							As we look at the data, the highest-educated state--Massachusetts--voted for Biden with 65.6% of the vote.
+							The least educated state--West Virginia--only voted for the democratic candidate with 29.69% of the vote.
+							Overall, there is a linear correlation between education levels and likelehood of voting for a democratic candidate.
+							However, it is not possible to draw a similar conclusion when looking at a state's population, as the second and third
+							most populated states voted for a republican. These findings can shed light into each party's platform. Through
+							bills such as the Build Back Better Act, democrats are consistently trying to increase access to education,
+							whereas republicans regularly try to critique higher education. This makes sense, as each party knows its
+							constituent's demographics, and they want to expand upon them.</p></div>
+
+
+							</body>
+						</section>
+
+						<!-- Second Section -->
+						<section id="conclusion" class="main special">
+							<header class="major">
+								<h2>Conclusion</h2>
+								<p>The Effect of America's "Push Back"</p>
+							</header>
+							<body>
+							<div id="footer7"><p style="text-align:left">After viewing and analyzing the visualizations, there is a
+							clear indicator to which party will win the next election: whichever party is currently in control of
+							the White House and Congress will likely lose control in both branches of government in the next election without
+							an incumbent. Whenever one party controls all branches, they tend to push their more extreme policies, and the American
+							electorate has thus recognized the importance of a competing party. When looking at which people are more likely to vote
+							for one party over another, it is evident that voters with a bachelor's degree are more likely to vote for the democratic
+							candidate, whereas those with only a high school degree are more likely to vote for a republican candidate. This fact,
+							coupled with the election results and other demographics, directly impact both party's policies and platforms.</p></div>
+
+
+							</body>
+						</section>
+
+					</div>
+
+
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<h2>A quick note about biases</h2>
+							<p>While everyone has their own political preferences and biases, I ensured to
+								only focus on the facts and data. To the best of my ability, I avoided my own
+								biases from influencing the work of this project. It was simply an analysis of U.S. elections,
+								and it focuses on wins and losses from both parties.<br><br>To see more from me, check out my GitHub or bl.ocks pages, which you can find on
+							the right under my contact info</p>
+						</section>
+						<section>
+							<h2>My Info</h2>
+							<dl class="alt">
+								<dt>School</dt>
+								<dd>University of San Francisco</dd>
+								<dt>Email</dt>
+								<dd><a href="#">rdirajlal@dons.usfca.edu</a></dd>
+							</dl>
+							<ul class="icons">
+								<li><a href="https://www.github.com/ryan-dirajlal" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+								<li><a href="https://bl.ocks.org/ryan-dirajlal" class="icon brands fa-dribbble alt"><span class="label">Dribbble</span></a></li>
+							</ul>
+						</section>
+						<p class="copyright">By Ryan Dirajlal</p>
+					</footer>
+
+			</div>
+
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="lineChart.js"></script>
 
 
 	</body>
