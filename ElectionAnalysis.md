@@ -1,5 +1,5 @@
 ---
-title: Election Analysis by Ryan
-layout: template
-filename: ElectionAnalysis.md
+layout: page
+title: "Election Analysis By Ryan"
+permalink: /ElectionAnalysis/
 ---
