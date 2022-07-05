@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <p>
+        Immarat!
+    </p>
+    <div class="image"  onclick="aud_play_pause()"><img src="pics/Rat-clip-art-blogsbeta-2.jpeg" alt="" /></div><div class="content">
+    </div>
+</head>
+<body>
+
+</body>
+<audio id="myAudio" autoplay loop>
+    <source src="pics/immarat.m4a" type="audio/mpeg">
+    This HTML5 player is not supported by your browser
+</audio>
+<!--<button type="button" onclick="aud_play_pause()">Play/Pause</button>-->
+<script>
+    function aud_play_pause() {
+        var myAudio = document.getElementById("myAudio");
+        if (myAudio.paused) {
+            myAudio.play();
+        } else {
+            myAudio.pause();
+        }
+    }
+</script>
+</html>
